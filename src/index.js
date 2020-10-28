@@ -11,13 +11,11 @@ app.use(express.json());
 const projects = [];
 
 app.get('/projects', (request, response) => {
-    // const {title} = request.query;
-    // console.log(title);
-    // return response.json([
-    //     'Projeto 1',
-    //     'Projeto 2',
-    //     'Projeto 3'
-    // ]);
+    const {title} = request.query;
+
+    const results = title
+         ? projects.filter(project => project.title.includes(title))
+         : projects;
     return response.json(projects);
 });
 
